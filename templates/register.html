@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+    You are still logged in.
+    <a class="btn btn-warning" href="{% url 'accounts:logout' %}">Logout</a>
+    {% else %}
+    <h1>Sign Up for Free</h1>
+
+    <form method="post" action=""> {% csrf_token %}
+        {{ registration_form.errors }}
+
+        first_name:
+        {{ registration_form.firstname }}
+        {{ registration_form.firstname.errors }}
+        Last_name:
+        {{ registration_form.lastname }}
+        {{ registration_form.lastname.errors }}
+        username:
+        {{ registration_form.username }}
+        {{ registration_form.username.errors }}
+        email:
+        {{ registration_form.email }}
+        {{ registration_form.email.errors }}
+        confirm_email:
+        {{ registration_form.email2 }}
+        {{ registration_form.email2.errors }}
+        password:
+        {{ registration_form.password }}
+        {{ registration_form.password.errors }}
+        confirm_password:
+        {{ registration_form.password2 }}
+        {{ registration_form.password2.errors }}
+        captcha:
+        {{ registration_form.captcha }}
+        {{ registration_form.captcha.errors }}
+        <input class="btn btn-primary" type="submit" value="Get Started" name="signup">
+    </form><!-- form ends here-->
+    {% endif %}
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% block title %}Activate your account{% endblock title %}
+
+{% block content %}
+
+    {% if already_active %}
+        <h1>Your account is already Activated. (or display error message here.</h1>
+    {% else %}
+        {% if activation_expired %}
+            <h1>
+                Activation link is expired. To send Another activation link
+                <a href="{% url 'accounts:new_activate' user_id=id_user %}">
+                    Click here.
+                </a>
+            </h1>
+        {% else %}
+            <h1>Your account is activated.</h1>
+        {% endif %}
+    {% endif %}
+
+{% endblock content %}

@@ -31,12 +31,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # Django Apps.
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 3rd party Apps.
+    'captcha',
+    # My Apps.
+    'accounts',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -106,7 +111,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
@@ -119,3 +124,37 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),       # for local environment.
+    # 'var/www/static',                     # for production.
+]
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
+
+MEDIA_URL = '/media/'
+MEDIA_URL_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+
+# Captcha App settings.
+# generate these keys for a specific domain at https://www.google.com/recaptcha/admin#list.
+RECAPTCHA_PUBLIC_KEY = '6LcYWCQTAAAAADdbZEaYAMuMKcFF6lnVip6fdtHA'
+RECAPTCHA_PRIVATE_KEY = '6LcYWCQTAAAAAGBAgwgYT2icrj7bd-GUKFddLeuP'
+NOCAPTCHA = True  # it enables the no captcha widget.
+
+# My Variables.
+MESSAGE = '''
+    <div class="alert alert-%s alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        %s
+    </div>
+'''
+DOMAIN = 'http://localhost:8000/'
+
+# email funciton
+# EMAIL_HOST = '127.0.0.1'
+# EMAIL_HOST_USER = ''
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_PORT = 1025
+# EMAIL_USE_TLS = False
+

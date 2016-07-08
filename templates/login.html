@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Login/Register{% endblock title %}
+
+{% block content %}
+{% if request.user.is_authenticated %}
+    You are still logged in.
+    <a class="btn btn-warning" href="{% url 'accounts:logout' %}">Logout</a>
+{% else %}
+
+    <h1>Welcome Back!</h1>
+    <form method="post" action="">  {% csrf_token %}
+        Errors:
+        {{ login_form.errors }}<br>
+        username:
+        {{ login_form.username }}
+        {{ login_form.username.errors }}
+        password:
+        {{ login_form.password }}
+        {{ login_form.password.errors }}
+        rememberme:
+        {{ login_form.rememberme }}
+        {{ login_form.rememberme.errors }}
+        captcha:
+        {{ login_form.captcha }}
+        {{ login_form.captcha.errors }}
+        <input class="button button-block" type="submit" value="Log In" name="login">
+    </form><!-- form ends here-->
+{% endif %}
+
+{% endblock content %}

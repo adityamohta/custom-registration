@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %} Highway Cookie {% endblock title %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" media="all" />
+
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+</head>
+<body>
+
+<div class="container">
+{% block content %}
+{% endblock content %}
+{% include 'messages.html' %}
+</div>
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js"></script>
+
+</body>
+</html>
