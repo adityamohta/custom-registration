@@ -24,6 +24,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home),
     url(r'^accounts/', include('accounts.urls', namespace='accounts')),
+    url(r'^api/accounts/', include('accounts.api.urls', namespace='accounts-api')),
 ]
 
 if settings.DEBUG:

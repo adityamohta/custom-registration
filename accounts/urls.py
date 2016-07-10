@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 
 from .views import (
     activation,
@@ -9,6 +9,7 @@ from .views import (
     reset_password,
     reset_password_view,
 )
+
 
 urlpatterns = [
     url(r'^activate/(?P<key>.+)$', activation, name='activate'),
